@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shuriken.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +104,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\kunai.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dojo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forest.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3yIDhX.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ninja.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
