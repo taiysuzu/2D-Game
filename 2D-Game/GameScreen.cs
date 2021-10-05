@@ -14,30 +14,82 @@ namespace _2D_Game
     {
         bool upArrowDown, downArrowDown = false; //player control keys
 
-        List <Shuriken> shurikens = new List<Shuriken>(); //list of obstacles
-        int newShurikenCounter = 0;                       //timer to add obstacle
+        Random randGen = new Random();
+
+        List<Shuriken> shurikens = new List<Shuriken>(); //shuriken values (list, counter etc.)
+        int newShurikenCounter = 0;
         int shurikenX = 700;
-        int interval = 0;
+        int shurikenY = 130;
+        int shurikenSpeed = 8;
+        int shurikenSizeX = 40;
+        int shurikenSizeY = 7;
+
+        Player player1;//player values
+        int playerSpeed = 5;
+        int playerSize = 60;
+        int playerStartX = 10;
+        int playerStartY = 120;
 
         public GameScreen()
         {
             InitializeComponent();
         }
 
-        private void GameScreen_Load(object sender, EventArgs e)
+        private void GameScreen_Load(object sender, EventArgs e) //initial game values / on start setup
         {
-
+            player1 = new Player(playerStartX, playerStartY, playerSpeed, playerSize);
+            CreateShuriken(shurikenX, shurikenY);
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            newShurikenCounter++;
+            foreach (Shuriken shuriken in shurikens) //update location of obstacles
+            {
+                shuriken.Move("left");
+            }
+            if (shurikens[0].x + shurikens[0].sizeX <= 0)
+            {
+                shurikens.RemoveAt(0);
+            }
 
+            if (upArrowDown == true && player1.y >= 0) //update location of player
+            {
+                player1.Move("up");
+            }
+            else if (downArrowDown == true && player1.y + player1.size <= this.Height)
+            {
+                player1.Move("down");
+            }
+
+            if (newShurikenCounter == 10)//add shuriken if it is time
+            {
+                shurikenY = randGen.Next(1, 293);
+                CreateShuriken(shurikenX, shurikenY);
+                newShurikenCounter = 0;
+            }
+
+            foreach (Shuriken shuriken in shurikens)   //check for collisions, and stop game
+            {
+                if (shuriken.Collision(player1) == true)
+                {
+                    Form f = this.FindForm();               
+                    f.Controls.Remove(this);
+                    GameOverScreen gos = new GameOverScreen();
+                    f.Controls.Add(gos);
+                }
+            }
             Refresh();
         }
 
-        private void GameScreen_Paint(object sender, PaintEventArgs e) 
-        {
+        private void GameScreen_Paint(object sender, PaintEventArgs e)
+        {   //draw player
+            e.Graphics.DrawImage(_2D_Game.Properties.Resources.ninja, player1.x, player1.y, player1.size, player1.size);
 
+            foreach (Shuriken shuriken in shurikens)
+            {//draw shuriken
+                e.Graphics.DrawImage(_2D_Game.Properties.Resources.kunai, shuriken.x, shuriken.y, shurikenSizeX, shurikenSizeY);
+            }
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -64,6 +116,13 @@ namespace _2D_Game
                     downArrowDown = false;
                     break;
             }
+        }
+
+        public void CreateShuriken(int x, int y)
+        {
+            Shuriken shuriken = new Shuriken(x, y, shurikenSpeed, shurikenSizeX, shurikenSizeY);
+
+            shurikens.Add(shuriken);
         }
     }
 }

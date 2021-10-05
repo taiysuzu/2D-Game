@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace _2D_Game
 {
     class Shuriken
     {
-        public int x, y, speed;
+        public int x, y, speed, sizeX, sizeY;
 
-        public Shuriken(int _x, int _y, int _speed)
+        public Shuriken(int _x, int _y, int _speed, int _sizeX, int _sizeY)
         {
             x = _x;
             y = _y;
             speed = _speed;
+            sizeX = _sizeX;
+            sizeY = _sizeY;
         }
 
         public void Move(string direction)
@@ -29,6 +32,20 @@ namespace _2D_Game
             }
         }
 
+        public bool Collision(Player player)
+        {
+            Rectangle playerRect = new Rectangle(player.x, player.y, player.size, player.size);
 
-     }
+            Rectangle shurikenRect = new Rectangle(x, y, sizeX, sizeY);
+
+            if (shurikenRect.IntersectsWith(playerRect))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 }

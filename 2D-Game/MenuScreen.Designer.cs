@@ -48,7 +48,7 @@ namespace _2D_Game
             // 
             // startButton
             // 
-            this.startButton.BackColor = System.Drawing.Color.Transparent;
+            this.startButton.BackColor = System.Drawing.Color.Black;
             this.startButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.startButton.FlatAppearance.BorderSize = 0;
             this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -64,7 +64,7 @@ namespace _2D_Game
             // 
             // exitButton
             // 
-            this.exitButton.BackColor = System.Drawing.Color.Transparent;
+            this.exitButton.BackColor = System.Drawing.Color.Black;
             this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exitButton.FlatAppearance.BorderSize = 0;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

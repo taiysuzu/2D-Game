@@ -22,7 +22,7 @@ namespace _2D_Game
             Form f = this.FindForm();               //if start button is pressed, start game
             f.Controls.Remove(this);
             GameScreen gs = new GameScreen();
-            this.Controls.Add(gs);
+            f.Controls.Add(gs);
         }
 
         private void exitButton_Click(object sender, EventArgs e)
