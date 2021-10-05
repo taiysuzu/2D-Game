@@ -69,7 +69,7 @@ namespace _2D_Game
                 newShurikenCounter = 0;
             }
 
-            foreach (Shuriken shuriken in shurikens)   //check for collisions, and stop game
+            foreach (Shuriken shuriken in shurikens)   //check for collisions, if there is one, end game and display game over screen
             {
                 if (shuriken.Collision(player1) == true)
                 {
@@ -119,9 +119,8 @@ namespace _2D_Game
         }
 
         public void CreateShuriken(int x, int y)
-        {
+        {//create a new obstacle and add it to the list
             Shuriken shuriken = new Shuriken(x, y, shurikenSpeed, shurikenSizeX, shurikenSizeY);
-
             shurikens.Add(shuriken);
         }
     }
