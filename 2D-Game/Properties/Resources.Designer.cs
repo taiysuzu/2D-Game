@@ -63,16 +63,6 @@ namespace _2D_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap dojo {
-            get {
-                object obj = ResourceManager.GetObject("dojo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap forest {
             get {
                 object obj = ResourceManager.GetObject("forest", resourceCulture);
