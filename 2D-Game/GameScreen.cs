@@ -30,6 +30,9 @@ namespace _2D_Game
         int playerStartX = 10;
         int playerStartY = 120;
 
+        //Image blade;
+        //Image player;
+
         public GameScreen()
         {
             InitializeComponent();
@@ -39,6 +42,9 @@ namespace _2D_Game
         {
             player1 = new Player(playerStartX, playerStartY, playerSpeed, playerSize);
             CreateShuriken(shurikenX, shurikenY);
+            GameOverScreen.score = 0;
+            //blade = _2D_Game.Properties.Resources.kunai;
+           // player = _2D_Game.Properties.Resources.ninja;
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
@@ -48,21 +54,22 @@ namespace _2D_Game
             {
                 shuriken.Move("left");
             }
-            if (shurikens[0].x + shurikens[0].sizeX <= 0)
+            if (shurikens[0].x + shurikens[0].sizeX <= 1)
             {
                 shurikens.RemoveAt(0);
+                GameOverScreen.score++;
             }
 
-            if (upArrowDown == true && player1.y >= 0) //update location of player
+            if (upArrowDown == true && player1.y >= 1) //update location of player
             {
                 player1.Move("up");
             }
-            else if (downArrowDown == true && player1.y + player1.size <= this.Height)
+            else if (downArrowDown == true && player1.y + player1.size <= 299)
             {
                 player1.Move("down");
             }
 
-            if (newShurikenCounter == 10)//add shuriken if it is time
+            if (newShurikenCounter == 15)//add shuriken if it is time
             {
                 shurikenY = randGen.Next(1, 293);
                 CreateShuriken(shurikenX, shurikenY);
@@ -74,7 +81,7 @@ namespace _2D_Game
                 if (shuriken.Collision(player1) == true)
                 {
                     Form f = this.FindForm();               
-                    f.Controls.Remove(this);
+                    f.Controls.Remove(f);
                     GameOverScreen gos = new GameOverScreen();
                     f.Controls.Add(gos);
                 }
