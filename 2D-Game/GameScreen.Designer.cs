@@ -36,7 +36,7 @@ namespace _2D_Game
             // gameTimer
             // 
             this.gameTimer.Enabled = true;
-            this.gameTimer.Interval = 15;
+            this.gameTimer.Interval = 20;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // GameScreen
@@ -44,6 +44,7 @@ namespace _2D_Game
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::_2D_Game.Properties.Resources.forest;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DoubleBuffered = true;
             this.Name = "GameScreen";

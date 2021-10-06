@@ -20,7 +20,7 @@ namespace _2D_Game
         int newShurikenCounter = 0;
         int shurikenX = 700;
         int shurikenY = 130;
-        int shurikenSpeed = 8;
+        int shurikenSpeed = 15;
         int shurikenSizeX = 40;
         int shurikenSizeY = 7;
 
@@ -29,9 +29,6 @@ namespace _2D_Game
         int playerSize = 60;
         int playerStartX = 10;
         int playerStartY = 120;
-
-        //Image blade;
-        //Image player;
 
         public GameScreen()
         {
@@ -43,8 +40,6 @@ namespace _2D_Game
             player1 = new Player(playerStartX, playerStartY, playerSpeed, playerSize);
             CreateShuriken(shurikenX, shurikenY);
             GameOverScreen.score = 0;
-            //blade = _2D_Game.Properties.Resources.kunai;
-           // player = _2D_Game.Properties.Resources.ninja;
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
@@ -80,8 +75,9 @@ namespace _2D_Game
             {
                 if (shuriken.Collision(player1) == true)
                 {
+                    gameTimer.Enabled = false;
                     Form f = this.FindForm();               
-                    f.Controls.Remove(f);
+                    f.Controls.Remove(this);
                     GameOverScreen gos = new GameOverScreen();
                     f.Controls.Add(gos);
                 }

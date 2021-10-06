@@ -35,7 +35,7 @@ namespace _2D_Game
 
         private void GameOverScreen_Load(object sender, EventArgs e)
         {
-            scoreLabel.Text += $"{score}";
+            scoreLabel.Text += $" {score}";
             Refresh();
         }
     }
